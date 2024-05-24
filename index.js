@@ -11,7 +11,7 @@ config({
 })
 const app = express();
 app.use(cors({
-    origin: process.env.CORS_ORIGIN
+    origin: [process.env.CORS_ORIGIN,"https://cash-4-phone-client.vercel.app"]
 }));
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", process.env.CORS_ORIGIN)
