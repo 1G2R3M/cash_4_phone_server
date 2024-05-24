@@ -20,14 +20,12 @@ app.use((req, res, next) => {
 })
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
-app.get("/", (req, res, next) => {
-    return res.status(200).json({ msg: "wellcome abord!" }).send()
-})
+
 app.use("/user", auth)
 app.use("/product", product)
 app.use("/sale", sale)
 app.listen(process.env.PORT, () => {
     mongoose.connect(process.env.MONGODB_URI)
-        .then(() => console.log(`Server running on http://localhost:${process.env.PORT}/`))
+        .then(() => console.log(`Server running on ${process.env.PORT}/`))
         .catch((error) => console.log(error));
 })
