@@ -11,7 +11,7 @@ config({
 })
 const app = express();
 app.use(cors({
-    origin: [process.env.CORS_ORIGIN,"https://cash-4-phone-client.vercel.app"]
+    origin: [process.env.CORS_ORIGIN, "https://cash-4-phone-client.vercel.app"]
 }));
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", process.env.CORS_ORIGIN)
@@ -20,6 +20,9 @@ app.use((req, res, next) => {
 })
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
+app.get("/", (req, res, next) => {
+    return res.status(200).json({ msg: "wellcome abord!" }).send()
+})
 app.use("/user", auth)
 app.use("/product", product)
 app.use("/sale", sale)
